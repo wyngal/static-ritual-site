@@ -18,10 +18,17 @@ describe('Hero carousel', () => {
 
   it('jumps to a slide when its dot is clicked and resets the timer', () => {
     render(<Hero />)
+    act(() => {
+      vi.advanceTimersByTime(3000)
+    })
     fireEvent.click(screen.getByLabelText('Go to slide 3'))
     expect(screen.getByTestId('hero-slide-2')).toHaveAttribute('aria-hidden', 'false')
     act(() => {
-      vi.advanceTimersByTime(5000)
+      vi.advanceTimersByTime(4999)
+    })
+    expect(screen.getByTestId('hero-slide-2')).toHaveAttribute('aria-hidden', 'false')
+    act(() => {
+      vi.advanceTimersByTime(1)
     })
     expect(screen.getByTestId('hero-slide-0')).toHaveAttribute('aria-hidden', 'false')
   })
