@@ -24,7 +24,7 @@ A single-page marketing site for **Static Ritual**, a live audio production comp
 
 - Vite + React 18 + TypeScript
 - Tailwind CSS v3 (config extended per hero spec: `fontFamily.geist`, `animation['spin-slow']`)
-- Lucide React (icons: `Menu`, `X`, plus SoundCloud/social glyphs as appropriate)
+- Lucide React (icons: `Menu`, `X`, `ArrowUpRight` for external links). Lucide has no brand icons, so SoundCloud and Instagram glyphs are small inline SVGs defined in the codebase.
 - Google Fonts **Geist** 300–700 via `https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&display=swap`
 - Body: `'Geist', -apple-system, BlinkMacSystemFont, sans-serif`, antialiased smoothing
 - No other runtime dependencies
@@ -85,7 +85,7 @@ Wraps images: subtle duotone/contrast treatment at rest; on hover, horizontal sl
 
 ### Nav (fixed top)
 
-Per the Nexform hero spec, rebranded:
+Per the Nexform hero spec, rebranded. One deliberate deviation: the original spec places the nav inside the hero section, but since this page scrolls through five sections, the nav is `fixed` so the menu stays reachable everywhere (transparent background; readability comes from the site's dark imagery).
 
 - **Logo (left):** "Static Ritual" with superscript `°` (`text-[10px] align-super ml-0.5`).
 - **Links (center, desktop only):** "DJs—", "Experience", "About" — smooth-scroll anchor links, `text-sm font-light tracking-wide hover:opacity-70`.
@@ -118,7 +118,7 @@ Per the Nexform hero spec, rebranded:
 
 Two halves:
 
-- **The Rig** — spec-sheet readout style (small caps, mono-flavored, `text-white/50`):
+- **The Rig** — spec-sheet readout style (small caps, Tailwind `font-mono`, `text-white/50`):
   - 4× QSC K12.2 (2,000 W each)
   - 2× QSC KS118 18" subs (4,000 W each)
   - Lighting rig
@@ -136,7 +136,7 @@ Pure text, editorial, no images. Paragraph built on: *"Static Ritual was founded
 - `mailto:nikshokur@gmail.com` styled like the hero CTA.
 - SoundCloud → `https://soundcloud.com/nikitashokur`; Instagram shown as placeholder handle `@static.ritual` (marked in `content.ts` as placeholder until the real handle is supplied).
 - Closing marquee strip: "STATIC RITUAL — " repeating, occasional glitch flicker (static under reduced motion).
-- Fine print: © year, "Live Audio Production".
+- Fine print: "© 2026 Static Ritual — Live Audio Production".
 
 ## Data Model (`src/data/content.ts`)
 
