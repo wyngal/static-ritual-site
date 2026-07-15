@@ -69,21 +69,26 @@ export default function GlitchCanvas() {
     let cleanupGl = () => {}
 
     const init = (): boolean => {
-      const gl = canvas.getContext('webgl', { alpha: true, antialias: false })
+      const gl = canvas.getContext('webgl', { alpha: true, antialias: false, premultipliedAlpha: false })
       if (!gl) return false
-      let program: WebGLProgram | null
+      let program: WebGLProgram | null = null
+      let vs: WebGLShader | null = null
+      let fs: WebGLShader | null = null
       try {
         program = gl.createProgram()
         if (!program) return false
-        gl.attachShader(program, compile(gl, gl.VERTEX_SHADER, VERT))
-        gl.attachShader(program, compile(gl, gl.FRAGMENT_SHADER, FRAG))
+        vs = compile(gl, gl.VERTEX_SHADER, VERT)
+        fs = compile(gl, gl.FRAGMENT_SHADER, FRAG)
+        gl.attachShader(program, vs)
+        gl.attachShader(program, fs)
         gl.linkProgram(program)
         if (!gl.getProgramParameter(program, gl.LINK_STATUS)) return false
       } catch {
         return false
       }
       gl.useProgram(program)
-      gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer())
+      const buf = gl.createBuffer()
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf)
       gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW)
       const aPos = gl.getAttribLocation(program, 'a_pos')
       gl.enableVertexAttribArray(aPos)
@@ -119,7 +124,7 @@ export default function GlitchCanvas() {
 
       const onVisibility = () => {
         cancelAnimationFrame(raf)
-        if (!document.hidden && !reduced) raf = requestAnimationFrame(draw)
+        if (!document.hidden) raf = requestAnimationFrame(draw)
       }
       document.addEventListener('visibilitychange', onVisibility)
 
@@ -127,6 +132,10 @@ export default function GlitchCanvas() {
         window.removeEventListener('resize', resize)
         document.removeEventListener('visibilitychange', onVisibility)
         cancelAnimationFrame(raf)
+        gl.deleteBuffer(buf)
+        gl.deleteProgram(program)
+        gl.deleteShader(vs)
+        gl.deleteShader(fs)
       }
       return true
     }
