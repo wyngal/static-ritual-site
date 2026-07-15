@@ -1,4 +1,4 @@
-import { rig, genres } from '../data/content'
+import { rig, genres, mediaLine } from '../data/content'
 import Section from './Section'
 import GlitchText from './GlitchText'
 
@@ -44,7 +44,7 @@ export default function Experience() {
             ))}
           </div>
           <p className="mt-10 text-white/40 text-xs font-light leading-relaxed max-w-md">
-            Professional photography and videography of every event — every ritual documented.
+            {mediaLine}
           </p>
         </div>
       </div>

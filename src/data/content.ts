@@ -125,6 +125,9 @@ export const genres: string[] = [
   'TECHNO',
 ]
 
+export const mediaLine =
+  'Professional photography and videography of every event — every ritual documented.'
+
 export const about: About = {
   paragraph:
     "Static Ritual was founded by a group of friends with deep roots in the music industry. We run high-energy, euphoric nights across dnb, tech house, trap, dubstep, UK bass, reggae, and techno — with our own sound, lights, visuals, and a dedicated crew that shows out at every single show. We're here for a great time, and we're here to bring back the underground music community.",

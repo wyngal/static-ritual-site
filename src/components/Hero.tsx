@@ -53,8 +53,11 @@ export default function Hero() {
                         : 'opacity-0 translate-y-4 absolute inset-0 pointer-events-none'
                     }`}
                   >
-                    <GlitchText text={s.text} className="block">
-                      <h1 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-[2.1rem] font-light leading-[1.45] tracking-tight">
+                    <GlitchText
+                      text={s.text}
+                      className="block text-white text-xl sm:text-2xl md:text-3xl lg:text-[2.1rem] font-light leading-[1.45] tracking-tight"
+                    >
+                      <h1>
                         {before}
                         <span className="underline underline-offset-4 decoration-white/60">
                           {s.underline}
