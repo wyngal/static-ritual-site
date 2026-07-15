@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { render, screen, act } from '@testing-library/react'
+import { render, screen, act, fireEvent } from '@testing-library/react'
 import GlitchText from './GlitchText'
 import GlitchImage from './GlitchImage'
 import Section from './Section'
@@ -36,6 +36,14 @@ describe('GlitchImage', () => {
 
   it('renders the image when src is provided', () => {
     render(<GlitchImage src="/media/crspy.png" alt="CR//SPY" />)
+    expect(screen.getByAltText('CR//SPY')).toBeInTheDocument()
+  })
+
+  it('recovers from a failed image when src changes', () => {
+    const { rerender } = render(<GlitchImage src="/media/broken.png" alt="CR//SPY" />)
+    fireEvent.error(screen.getByAltText('CR//SPY'))
+    expect(screen.getByTestId('dj-placeholder')).toBeInTheDocument()
+    rerender(<GlitchImage src="/media/crspy.png" alt="CR//SPY" />)
     expect(screen.getByAltText('CR//SPY')).toBeInTheDocument()
   })
 })
