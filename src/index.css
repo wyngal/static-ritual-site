@@ -24,3 +24,103 @@ body {
     scroll-behavior: auto;
   }
 }
+
+/* ---- glitch primitives ---- */
+.glitch-text {
+  position: relative;
+  display: inline-block;
+}
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  white-space: pre-wrap;
+}
+.glitch-text:hover::before,
+.glitch-text.glitching::before {
+  opacity: 0.7;
+  color: #f0f;
+  transform: translate(-2px, 1px);
+  animation: glitch-slice-a 0.3s steps(3, end) infinite;
+}
+.glitch-text:hover::after,
+.glitch-text.glitching::after {
+  opacity: 0.7;
+  color: #0ff;
+  transform: translate(2px, -1px);
+  animation: glitch-slice-b 0.3s steps(3, end) infinite;
+}
+@keyframes glitch-slice-a {
+  0% { clip-path: inset(10% 0 80% 0); }
+  33% { clip-path: inset(60% 0 10% 0); }
+  66% { clip-path: inset(30% 0 45% 0); }
+  100% { clip-path: inset(75% 0 5% 0); }
+}
+@keyframes glitch-slice-b {
+  0% { clip-path: inset(70% 0 10% 0); }
+  33% { clip-path: inset(20% 0 60% 0); }
+  66% { clip-path: inset(50% 0 25% 0); }
+  100% { clip-path: inset(5% 0 85% 0); }
+}
+
+.duotone-placeholder {
+  background:
+    linear-gradient(135deg, rgba(255, 0, 255, 0.12), rgba(0, 255, 255, 0.08)),
+    linear-gradient(to bottom right, #27272a, #09090b);
+}
+
+.glitch-image {
+  position: relative;
+  overflow: hidden;
+}
+.glitch-image-ghost {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+}
+.group:hover .ghost-a {
+  opacity: 0.5;
+  transform: translateX(-4px);
+  filter: grayscale(1) contrast(1.25) hue-rotate(300deg);
+  animation: glitch-slice-a 0.4s steps(3, end) infinite;
+}
+.group:hover .ghost-b {
+  opacity: 0.5;
+  transform: translateX(4px);
+  filter: grayscale(1) contrast(1.25) hue-rotate(160deg);
+  animation: glitch-slice-b 0.4s steps(3, end) infinite;
+}
+
+/* static grain fallback when WebGL is unavailable */
+.grain-static {
+  opacity: 0.3;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='128' height='128'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='128' height='128' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* contact marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glitch-text::before,
+  .glitch-text::after,
+  .glitch-image-ghost {
+    display: none;
+  }
+  .marquee-track {
+    animation: none;
+  }
+}
