@@ -1,8 +1,16 @@
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, beforeAll, afterAll, vi } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import App from './App'
 
 describe('App', () => {
+  beforeAll(() => {
+    vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockReturnValue(null)
+  })
+
+  afterAll(() => {
+    vi.restoreAllMocks()
+  })
+
   it('renders all anchored sections in order', () => {
     render(<App />)
     const ids = ['djs', 'experience', 'about', 'contact']
