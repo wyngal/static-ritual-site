@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
 import { navLinks, menuLinks, contact } from '../data/content'
 
@@ -8,6 +8,7 @@ interface Props {
 
 export default function Nav({ activeId = '' }: Props) {
   const [open, setOpen] = useState(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : ''
@@ -15,6 +16,11 @@ export default function Nav({ activeId = '' }: Props) {
       document.body.style.overflow = ''
     }
   }, [open])
+
+  const close = () => {
+    setOpen(false)
+    menuButtonRef.current?.focus()
+  }
 
   return (
     <>
@@ -36,6 +42,7 @@ export default function Nav({ activeId = '' }: Props) {
           ))}
         </div>
         <button
+          ref={menuButtonRef}
           aria-label="Open menu"
           onClick={() => setOpen(true)}
           className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:border-white/60 transition-colors duration-300"
@@ -50,7 +57,7 @@ export default function Nav({ activeId = '' }: Props) {
           open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
-        <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" onClick={() => setOpen(false)} />
+        <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" onClick={close} />
         <div
           className={`relative z-10 flex flex-col h-full px-8 pt-8 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
             open ? 'translate-y-0' : '-translate-y-8'
@@ -62,7 +69,8 @@ export default function Nav({ activeId = '' }: Props) {
             </span>
             <button
               aria-label="Close menu"
-              onClick={() => setOpen(false)}
+              onClick={close}
+              tabIndex={open ? 0 : -1}
               className="w-10 h-10 rounded-full border border-white/30 flex items-center justify-center text-white hover:border-white/60 transition-colors duration-300"
             >
               <X size={16} />
@@ -74,9 +82,10 @@ export default function Nav({ activeId = '' }: Props) {
                 key={l.label}
                 href={l.href ?? l.target}
                 {...(l.href ? { target: '_blank', rel: 'noreferrer' } : {})}
-                onClick={() => setOpen(false)}
+                onClick={close}
+                tabIndex={open ? 0 : -1}
                 style={{ transitionDelay: `${150 + i * 75}ms` }}
-                className={`text-white text-4xl sm:text-5xl font-light tracking-tight py-3 hover:opacity-60 transition-all duration-500 ${
+                className={`text-white text-4xl sm:text-5xl font-light tracking-tight py-3 hover:opacity-60 transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
                   open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}
               >
@@ -86,11 +95,15 @@ export default function Nav({ activeId = '' }: Props) {
           </div>
           <div
             style={{ transitionDelay: '450ms' }}
-            className={`border-t border-white/10 py-6 transition-opacity duration-500 ${
+            className={`border-t border-white/10 py-6 transition-opacity duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${
               open ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <a href={`mailto:${contact.email}`} className="text-white/40 text-xs font-light">
+            <a
+              href={`mailto:${contact.email}`}
+              tabIndex={open ? 0 : -1}
+              className="text-white/40 text-xs font-light"
+            >
               {contact.email}
             </a>
           </div>

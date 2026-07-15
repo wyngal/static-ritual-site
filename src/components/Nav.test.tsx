@@ -19,6 +19,7 @@ describe('Nav', () => {
     expect(screen.getByRole('link', { name: 'Contact' })).toHaveAttribute('href', '#contact')
     fireEvent.click(screen.getByLabelText('Close menu'))
     expect(document.body.style.overflow).toBe('')
+    expect(screen.getByLabelText('Open menu')).toHaveFocus()
   })
 
   it('links SoundCloud externally in the menu', () => {
