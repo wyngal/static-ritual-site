@@ -93,7 +93,7 @@ export const djs: DJ[] = [
   {
     name: 'CR//SPY',
     genres: ['dnb', 'dubstep', 'trap'],
-    image: '/media/crspy.png',
+    image: `${import.meta.env.BASE_URL}media/crspy.png`,
     soundcloud: 'https://soundcloud.com/nikitashokur',
     featured: true,
     size: 'featured',
