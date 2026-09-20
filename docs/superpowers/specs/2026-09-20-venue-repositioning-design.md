@@ -40,7 +40,7 @@ Nav and menu links gain `Next Ritual` and `Past Rituals`.
 
 The largest slab on the page.
 
-- `RITUAL 003 · TAMPA BAY · THU NOV 12 2026`
+- `RITUAL 003 · TAMPA BAY · SAT NOV 14 2026`
 - `LOCATION DISCLOSED 48HRS PRIOR — TO THE LIST ONLY.`
 - Lineup (roster names), rig line (`16,000W · FULL LIGHT + VISUAL RIG`)
 - Primary action: THE LIST signup (below)
@@ -123,7 +123,7 @@ interface PastRitual {
 interface NextRitual {
   number: string        // '003'
   region: string        // 'TAMPA BAY'
-  date: string          // ISO, '2026-11-12'
+  date: string          // ISO, '2026-11-14'
   lineup: string[]
   rigLine: string
 }
