@@ -180,7 +180,7 @@ export const rig: Rig = {
   ],
   brings: [
     'Full PA — tops and subs, tuned to the room',
-    'Lighting rig',
+    'Lights, rigged and run by us',
     'Reactive live visuals',
     'Photographer and videographer, all night',
     'Our own crew for load-in and load-out',

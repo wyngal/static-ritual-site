@@ -9,14 +9,12 @@ describe('Experience', () => {
     render(<Experience />)
     expect(screen.getByText('16,000 WATTS OF INTENT')).toBeInTheDocument()
     for (const item of rig.items) {
-      // getAllByText: some rig item labels also appear verbatim in the
-      // "We Arrive With" list (e.g. "Lighting rig"), so more than one match is valid.
-      expect(screen.getAllByText(item.label).length).toBeGreaterThan(0)
+      expect(screen.getByText(item.label)).toBeInTheDocument()
     }
     expect(document.getElementById('rig')).toBeInTheDocument()
     expect(screen.getByText('THE RIG')).toBeInTheDocument()
     for (const line of rig.brings) {
-      expect(screen.getAllByText(line).length).toBeGreaterThan(0)
+      expect(screen.getByText(line)).toBeInTheDocument()
     }
   })
 
