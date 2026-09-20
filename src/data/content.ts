@@ -33,6 +33,7 @@ export interface RigItem {
 
 export interface Rig {
   items: RigItem[]
+  brings: string[]
   pullStat: string
 }
 
@@ -85,32 +86,32 @@ export interface NextRitual {
 
 export const heroSlides: HeroSlide[] = [
   {
-    text: 'Full-stack event production — 16,000W of QSC sound, lights, and reactive visuals for rooms that want to move.',
+    text: 'The next ritual is coming to Tampa Bay — location disclosed 48 hours prior, to the list and nowhere else.',
+    underline: 'location disclosed 48 hours prior',
+    cta: 'Next Ritual—',
+    target: '#next',
+  },
+  {
+    text: 'Full-stack event production — 16,000W of QSC sound, lights, and reactive visuals. You bring the room. We bring everything else.',
     underline: '16,000W of QSC sound',
-    cta: 'The Experience—',
-    target: '#experience',
+    cta: 'The Rig—',
+    target: '#rig',
   },
   {
-    text: 'High-energy, euphoric mixes of dnb, techhouse, and UK bass — live audio production for the underground music community.',
-    underline: 'dnb, techhouse, and UK bass',
-    cta: 'Meet the DJs—',
-    target: '#djs',
-  },
-  {
-    text: 'A dedicated crew that shows out every show — bringing back the underground, one ritual at a time.',
-    underline: 'bringing back the underground',
-    cta: 'Book a Ritual—',
-    target: '#contact',
+    text: 'Two rituals, two cities, thousand-cap rooms at 80% and up — national headliners, booked and produced in-house.',
+    underline: 'thousand-cap rooms at 80% and up',
+    cta: 'Past Rituals—',
+    target: '#rituals',
   },
 ]
 
 export const heroFooter: HeroFooter = {
-  before: 'Full-stack live audio production for the underground — ',
-  underline: 'sound, lights, and visuals',
+  before: 'Full-stack event production for the underground — ',
+  underline: 'talent, sound, lights, and visuals',
   after: ', with professional photo and video of every ritual.',
-  secondLine: 'High-energy nights. A crowd that shows out. Zero compromise.',
+  secondLine: 'We book it. We build it. We fill it.',
   markers: ['SR', '33⅓', 'HZ'],
-  rightLines: ['Live Audio Production', 'Static Ritual'],
+  rightLines: ['Event Production', 'Static Ritual'],
 }
 
 export const djs: DJ[] = [
@@ -177,6 +178,13 @@ export const rig: Rig = {
     { label: 'Lighting rig', detail: 'beams / wash / strobe', watts: 0 },
     { label: 'Live visuals', detail: 'reactive projection', watts: 0 },
   ],
+  brings: [
+    'Full PA — tops and subs, tuned to the room',
+    'Lighting rig',
+    'Reactive live visuals',
+    'Photographer and videographer, all night',
+    'Our own crew for load-in and load-out',
+  ],
   pullStat: '16,000 WATTS OF INTENT',
 }
 
@@ -195,7 +203,7 @@ export const mediaLine =
 
 export const about: About = {
   paragraph:
-    "Static Ritual was founded by a group of friends with deep roots in the music industry. We run high-energy, euphoric nights across dnb, tech house, trap, dubstep, UK bass, reggae, and techno — with our own sound, lights, visuals, and a dedicated crew that shows out at every single show. We're here for a great time, and we're here to bring back the underground music community.",
+    "Static Ritual was founded by a group of friends with deep roots in the music industry. We're a full-stack production crew: we book the talent, haul in 16,000 watts of our own sound, rig the lights and reactive visuals, and keep a photographer on the floor all night. We've put national headliners in front of thousand-cap rooms in Nashville and Asheville. Hand us a room and we hand back a night people talk about — dnb, tech house, trap, dubstep, UK bass, reggae, techno. We're here to bring back the underground.",
   pullQuote: 'This is how we think it should be done.',
 }
 
@@ -207,14 +215,17 @@ export const contact: Contact = {
 }
 
 export const navLinks: NavLink[] = [
-  { label: 'DJs—', target: '#djs' },
-  { label: 'Experience', target: '#experience' },
-  { label: 'About', target: '#about' },
+  { label: 'Next Ritual—', target: '#next' },
+  { label: 'Rituals', target: '#rituals' },
+  { label: 'DJs', target: '#djs' },
+  { label: 'The Rig', target: '#rig' },
 ]
 
 export const menuLinks: MenuLink[] = [
+  { label: 'Next Ritual', target: '#next' },
+  { label: 'Past Rituals', target: '#rituals' },
   { label: 'DJs', target: '#djs' },
-  { label: 'Experience', target: '#experience' },
+  { label: 'The Rig', target: '#rig' },
   { label: 'About', target: '#about' },
   { label: 'Contact', target: '#contact' },
   { label: 'SoundCloud', href: 'https://soundcloud.com/nikitashokur' },

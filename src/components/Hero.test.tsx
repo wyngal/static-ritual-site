@@ -39,10 +39,10 @@ describe('Hero carousel', () => {
     // aria-hidden="true" (asserted by the tests above) and are therefore
     // excluded from the default accessibility-tree query.
     expect(
-      screen.getByRole('link', { name: 'The Experience—', hidden: true }),
-    ).toHaveAttribute('href', '#experience')
+      screen.getByRole('link', { name: 'Next Ritual—', hidden: true }),
+    ).toHaveAttribute('href', '#next')
     expect(
-      screen.getByRole('link', { name: 'Book a Ritual—', hidden: true }),
-    ).toHaveAttribute('href', '#contact')
+      screen.getByRole('link', { name: 'Past Rituals—', hidden: true }),
+    ).toHaveAttribute('href', '#rituals')
   })
 })

@@ -19,7 +19,7 @@ describe('App', () => {
   it('renders all anchored sections in order', () => {
     render(<App />)
     const ids = Array.from(document.querySelectorAll('main section[id]')).map((s) => s.id)
-    expect(ids).toEqual(['next', 'djs', 'rituals', 'experience', 'about', 'contact'])
+    expect(ids).toEqual(['next', 'djs', 'rituals', 'rig', 'about', 'contact'])
   })
 
   it('renders the nav and the grain layer', () => {

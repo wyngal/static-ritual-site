@@ -3,6 +3,7 @@ import { contact } from '../data/content'
 import Section from './Section'
 import GlitchText from './GlitchText'
 import { SoundCloudIcon } from './icons'
+import ListSignup from './ListSignup'
 
 export default function Contact() {
   const handle = contact.instagram.replace(/^@/, '')
@@ -10,10 +11,13 @@ export default function Contact() {
     <Section id="contact" className="pt-24 sm:pt-32">
       <div className="px-5 sm:px-8 md:px-12 lg:px-16">
         <GlitchText
-          text="BOOK A RITUAL"
+          text="MAKE CONTACT"
           ambient
           className="text-white text-5xl sm:text-7xl md:text-8xl font-light tracking-tight"
         />
+        <p className="mt-6 text-white/50 text-xs font-mono uppercase tracking-[0.3em]">
+          Venues. Promoters. Artists. One inbox.
+        </p>
         <div className="mt-8">
           <a
             href={`mailto:${contact.email}`}
@@ -45,6 +49,13 @@ export default function Contact() {
               <Instagram size={14} /> {contact.instagram} <ArrowUpRight size={12} />
             </a>
           )}
+        </div>
+
+        <div className="mt-16 border-t border-white/10 pt-10">
+          <p className="mb-6 text-white/50 text-xs font-mono uppercase tracking-[0.3em]">
+            Or just get on the list
+          </p>
+          <ListSignup id="contact" compact />
         </div>
       </div>
 

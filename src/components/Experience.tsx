@@ -4,22 +4,35 @@ import GlitchText from './GlitchText'
 
 export default function Experience() {
   return (
-    <Section id="experience" className="px-5 sm:px-8 md:px-12 lg:px-16 py-24 sm:py-32">
+    <Section id="rig" className="px-5 sm:px-8 md:px-12 lg:px-16 py-24 sm:py-32">
       <GlitchText
-        text="THE EXPERIENCE"
+        text="THE RIG"
         ambient
         className="text-white text-4xl sm:text-6xl md:text-7xl font-light tracking-tight"
       />
       <div className="mt-10 sm:mt-16 grid md:grid-cols-2 gap-16">
         <div>
           <h3 className="text-white/50 text-xs font-mono uppercase tracking-[0.3em] mb-6">
-            The Rig
+            The Stack
           </h3>
           <ul className="font-mono">
             {rig.items.map((item) => (
               <li key={item.label} className="flex justify-between gap-4 border-b border-white/10 py-3">
                 <span className="text-white uppercase text-xs tracking-wider">{item.label}</span>
                 <span className="text-white/50 text-xs">{item.detail}</span>
+              </li>
+            ))}
+          </ul>
+          <h3 className="text-white/50 text-xs font-mono uppercase tracking-[0.3em] mt-10 mb-6">
+            We Arrive With
+          </h3>
+          <ul className="font-mono">
+            {rig.brings.map((line) => (
+              <li
+                key={line}
+                className="border-b border-white/10 py-3 text-white uppercase text-xs tracking-wider"
+              >
+                {line}
               </li>
             ))}
           </ul>

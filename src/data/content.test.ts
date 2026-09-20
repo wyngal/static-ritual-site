@@ -6,12 +6,17 @@ describe('content data', () => {
     expect(heroSlides).toHaveLength(3)
     for (const s of heroSlides) {
       expect(s.text).toContain(s.underline)
-      expect(s.target).toMatch(/^#(djs|experience|about|contact)$/)
+      expect(s.target).toMatch(/^#(next|djs|rituals|rig|about|contact)$/)
     }
   })
 
-  it('leads with the 16,000W production slide', () => {
-    expect(heroSlides[0].underline).toBe('16,000W of QSC sound')
+  it('leads with the next ritual, then the rig, then the track record', () => {
+    expect(heroSlides.map((s) => s.target)).toEqual(['#next', '#rig', '#rituals'])
+    expect(heroSlides[1].underline).toBe('16,000W of QSC sound')
+  })
+
+  it('lists what the crew arrives with', () => {
+    expect(rig.brings).toHaveLength(5)
   })
 
   it('rig wattage totals 16,000', () => {

@@ -28,4 +28,10 @@ describe('Contact', () => {
     render(<Contact />)
     expect(screen.getByText('© 2026 Static Ritual — Live Audio Production')).toBeInTheDocument()
   })
+
+  it('leads with MAKE CONTACT and repeats the list signup', () => {
+    render(<Contact />)
+    expect(screen.getByText('MAKE CONTACT')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'GET ON THE LIST —' })).toBeInTheDocument()
+  })
 })

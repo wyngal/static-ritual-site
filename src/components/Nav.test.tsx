@@ -8,8 +8,9 @@ describe('Nav', () => {
     // NOTE: "Static Ritual" text appears twice (nav bar + menu overlay header),
     // so target the unique logo link, not getByText.
     expect(screen.getByRole('link', { name: /Static Ritual/ })).toHaveAttribute('href', '#top')
-    expect(screen.getByRole('link', { name: 'DJs—' })).toHaveAttribute('href', '#djs')
-    expect(screen.getByRole('link', { name: 'Experience' })).toHaveAttribute('href', '#experience')
+    expect(screen.getByRole('link', { name: 'Next Ritual—' })).toHaveAttribute('href', '#next')
+    expect(screen.getByRole('link', { name: 'Rituals' })).toHaveAttribute('href', '#rituals')
+    expect(screen.getByRole('link', { name: 'The Rig' })).toHaveAttribute('href', '#rig')
   })
 
   it('opens and closes the mobile menu, locking body scroll', () => {
