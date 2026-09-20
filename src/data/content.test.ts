@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { heroSlides, djs, rig, genres, about, contact } from './content'
+import { heroSlides, djs, rig, genres, about, contact, pastRituals, nextRitual } from './content'
 
 describe('content data', () => {
   it('has three hero slides whose underline phrase appears in the text', () => {
@@ -36,5 +36,22 @@ describe('content data', () => {
     expect(contact.email).toBe('nikshokur@gmail.com')
     expect(contact.instagramIsPlaceholder).toBe(true)
     expect(about.pullQuote).toBe('This is how we think it should be done.')
+  })
+
+  it('lists past rituals newest first with unique slugs and sane attendance', () => {
+    expect(pastRituals.map((r) => r.number)).toEqual(['002', '001'])
+    expect(pastRituals.map((r) => r.slug)).toEqual(['nashville', 'asheville'])
+    expect(new Set(pastRituals.map((r) => r.slug)).size).toBe(pastRituals.length)
+    for (const r of pastRituals) {
+      expect(r.attendance).toBeLessThanOrEqual(r.capacity)
+      expect(r.headliner).toBe('Yung Gravy')
+      expect(r.lineup).toEqual(['CR//SPY'])
+    }
+  })
+
+  it('sets the next ritual for Saturday Nov 14 2026 in Tampa Bay', () => {
+    expect(nextRitual.number).toBe('003')
+    expect(nextRitual.region).toBe('TAMPA BAY')
+    expect(nextRitual.date).toBe('2026-11-14')
   })
 })

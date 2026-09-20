@@ -59,6 +59,30 @@ export interface MenuLink {
   href?: string
 }
 
+export interface PastRitual {
+  number: string
+  slug: string
+  city: string
+  date: string
+  attendance: number
+  capacity: number
+  headliner: string
+  lineup: string[]
+  quote: string
+  cover: string | null
+  photos: string[]
+}
+
+export interface NextRitual {
+  number: string
+  region: string
+  date: string
+  lineup: string[]
+  lineupNote: string
+  rigLine: string
+  disclosure: string
+}
+
 export const heroSlides: HeroSlide[] = [
   {
     text: 'Full-stack event production — 16,000W of QSC sound, lights, and reactive visuals for rooms that want to move.',
@@ -103,6 +127,47 @@ export const djs: DJ[] = [
   { name: 'LOW THEORY', genres: ['dnb', 'jungle'], image: null, size: 'square' },
   { name: 'GHOST FREQ', genres: ['trap', 'uk bass'], image: null, size: 'wide' },
   { name: 'RED SHIFT', genres: ['reggae', 'dub'], image: null, size: 'wide' },
+]
+
+export const nextRitual: NextRitual = {
+  number: '003',
+  region: 'TAMPA BAY',
+  date: '2026-11-14',
+  lineup: ['CR//SPY'],
+  lineupNote: 'MORE NAMES UNVEILED CLOSER TO THE NIGHT',
+  rigLine: '16,000W · FULL LIGHT + VISUAL RIG',
+  disclosure: 'LOCATION DISCLOSED 48HRS PRIOR — TO THE LIST ONLY.',
+}
+
+// Newest first. City only — venue and event names stay off the site.
+// cover/photos are empty until real event photos are supplied.
+export const pastRituals: PastRitual[] = [
+  {
+    number: '002',
+    slug: 'nashville',
+    city: 'NASHVILLE, TN',
+    date: 'AUG 2025',
+    attendance: 800,
+    capacity: 1000,
+    headliner: 'Yung Gravy',
+    lineup: ['CR//SPY'],
+    quote: 'Eight hundred deep. The floor never cleared.',
+    cover: null,
+    photos: [],
+  },
+  {
+    number: '001',
+    slug: 'asheville',
+    city: 'ASHEVILLE, NC',
+    date: 'JUN 2024',
+    attendance: 990,
+    capacity: 1100,
+    headliner: 'Yung Gravy',
+    lineup: ['CR//SPY'],
+    quote: 'Wall to wall in the mountains. The first one set the standard.',
+    cover: null,
+    photos: [],
+  },
 ]
 
 export const rig: Rig = {
